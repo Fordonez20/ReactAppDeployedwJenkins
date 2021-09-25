@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    label 'Jenkins Agent 1 (Dep6)'
+  }
   stages {
     stage ('Build') {
       steps {
@@ -20,7 +22,7 @@ pipeline {
       sh '''
         npm install cypress
         npm install mocha
-        npx cypress run --spec \ ./cypress/integration/test.spec.js
+        npx cypress run --spec \ ./cypress/test.spec.js
         '''
       }
       post {
